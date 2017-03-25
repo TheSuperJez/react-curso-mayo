@@ -28,7 +28,7 @@ export const loadQuestions = () => {
 		return questionApi.getAll().then(response => {
 			let questionsList = new Immutable.List();
 			_.each(response.data.results, (element) => {
-				let answersList = new Immutable.List(); 
+				let answersList = new Immutable.List();
 				let question = new Question(element);
 
 				_.each(element.answers, (elem) => {
