@@ -1,4 +1,4 @@
-import * as questionModule from '../../modules/questionModule';
+import reducer, * as questionModule from '../../modules/questionModule';
 
 import {expect} from 'chai';
 
@@ -11,7 +11,7 @@ describe('Reducer de questions', () => {
 			type: questionModule.LOAD_QUESTION_LIST_SUCCESS,
 			questionsList: []
 		};
-		let testState = questionModule.reducer(initialState.questionModule, test);
+		let testState = reducer(initialState.questionModule, test);
 		expect(testState.get('questionsList')).to.be.an('array');
 	});
 });
