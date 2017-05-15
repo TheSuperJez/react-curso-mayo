@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react';
-import {Table} from 'react-bootstrap';
+
 import CandidateRow from './CandidateTableRow';
+import {Table} from 'react-bootstrap';
 
 const CandidateList = ({candidatesList, getYears}) => {
 	let candidate = candidatesList.map((element, index) => {
-		let propiedades = element.toJSON();
+		let propiedades = element;
 		propiedades.getYears = getYears;
 		
 		return (

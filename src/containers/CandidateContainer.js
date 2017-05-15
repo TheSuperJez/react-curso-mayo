@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+
 import {connect} from 'react-redux';
 import {saveCandidate} from '../modules/candidateModule';
 
@@ -17,7 +18,7 @@ class CandidateContainer extends React.Component {
 	render() {
 		let components = this.props.children && React.cloneElement(this.props.children, {
 			saveCandidate: this.props.saveCandidate,
-			candidatesList: this.props.candidatesList.toArray(),
+			candidatesList: this.props.candidatesList,
 			getYears: this.getYears
 			
 		});
@@ -32,7 +33,7 @@ class CandidateContainer extends React.Component {
 CandidateContainer.propTypes = {
 	children: PropTypes.object, 
 	saveCandidate: PropTypes.func,
-	candidatesList: PropTypes.object
+	candidatesList: PropTypes.array
 }; 
 
 function mapStateToProps(state) {
