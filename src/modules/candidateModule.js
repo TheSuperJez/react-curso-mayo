@@ -7,6 +7,7 @@ import initialState from './initialState';
 
 const LOAD_CANDIDATE_LIST_SUCCESS = 'LOAD_CANDIDATE_LIST_SUCCESS';
 const SAVE_CANDIDATE_SUCCESS = 'SAVE_CANDIDATE_SUCCESS';
+const DELETE_CANDIDATE = 'DELETE_CANDIDATE';
 
 export default function reducer(state = initialState.get('candidateModule'), action) {
 	switch (action.type) {
@@ -16,6 +17,12 @@ export default function reducer(state = initialState.get('candidateModule'), act
 	case SAVE_CANDIDATE_SUCCESS: {
 		let candidatos = Object.assign([], state.get('candidatesList'));
 		candidatos.push(action.result);
+		//action.error;
+		return state.set('candidatesList', candidatos);
+	}
+	case DELETE_CANDIDATE: {
+		let candidatos = Object.assign([], state.get('candidatesList'));
+		candidatos.splice(action.index, 1);
 		return state.set('candidatesList', candidatos);
 	}
 	default: return state;
@@ -31,7 +38,8 @@ export const loadCandidates = () => {
 				let candidate = new Candidate(element);
 				candidatesList = candidatesList.push(candidate);
 			});
-			dispatch({ type: LOAD_CANDIDATE_LIST_SUCCESS, candidatesList });
+			dispatch({ type: LOAD_CANDIDATE_LIST_SUCCESS,
+				candidatesList: candidatesList });
 		}).catch(error => {
 			dispatch(ajaxCallError(error));
 			throw (error);
@@ -40,10 +48,22 @@ export const loadCandidates = () => {
 };
 
 export const saveCandidate = (candidate) => {
+	// candidate = {nombre: "Juan", apellido: "ramirez"}
 	return (dispatch) => {
 		dispatch({
 			type: SAVE_CANDIDATE_SUCCESS,
-			result: candidate
+			result: candidate,
+			error: false
+		});
+	};
+};
+
+
+export const deleteCandidate = (index) => {
+	return (dispatch) => {
+		dispatch({
+			type: DELETE_CANDIDATE,
+			index: index
 		});
 	};
 };

@@ -1,5 +1,5 @@
+import {Button, Col, ControlLabel, FormControl, FormGroup, Row} from 'react-bootstrap';
 import React, {PropTypes} from 'react';
-import {FormControl, FormGroup, ControlLabel, Col, Button, Row} from 'react-bootstrap';
 
 class CandidateForm extends React.Component {
 
@@ -42,6 +42,7 @@ class CandidateForm extends React.Component {
 	render() { 
 		return (
 			<form onSubmit={this.saveCandidate}>
+				{'Este es el componente candidateForm'}
 				<Row>
 					<Col xs={8}>
 						<FormGroup>

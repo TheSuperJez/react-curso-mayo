@@ -1,8 +1,9 @@
+import {Nav, NavItem, Navbar} from 'react-bootstrap';
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import {loadQuestions} from '../modules/questionModule';
+
 import Dots from './common/Dots';
+import {connect} from 'react-redux';
+import {loadQuestions} from '../modules/questionModule';
 
 class App extends React.Component {
 
@@ -33,11 +34,17 @@ class App extends React.Component {
 							<NavItem eventKey={2} href="#/candidate/new">
 								{'New Candidate'}
 							</NavItem> 
-							
+							<NavItem eventKey={4} href="#/lang">
+								{'Lenguajes'}
+							</NavItem> 
+							<NavItem eventKey={5} href="#/user/">
+								{'Timer'}
+							</NavItem> 
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
 				<div className="container-fluid">
+					{'Este es el componene APP'}
 					{this.props.loading === true && (
 						<Dots />
 					)}

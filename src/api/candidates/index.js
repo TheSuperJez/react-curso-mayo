@@ -1,4 +1,4 @@
-import {post, get} from 'axios';
+import {get, post} from 'axios';
 
 let path = 'http://localhost:1337/parse/classes/candidate',
 	conf = {

@@ -1,13 +1,14 @@
 import React, {PropTypes} from 'react';
+import {deleteCandidate, saveCandidate} from '../modules/candidateModule';
 
 import {connect} from 'react-redux';
-import {saveCandidate} from '../modules/candidateModule';
 
 class CandidateContainer extends React.Component {
 
 	constructor(props, context) {
 		super(props, context); 
-
+		this.eliminarCandidatos = this.eliminarCandidatos.bind(this);
+		
 		this.getYears = this.getYears.bind(this);	
 	} 
 
@@ -15,16 +16,25 @@ class CandidateContainer extends React.Component {
 		return Math.abs(new Date(new Date(timestamp) - new Date()).getUTCFullYear() - 1970) - 1;
 	}
 
+	eliminarCandidatos(event) {
+		let index = event.target.attributes['data-index'].nodeValue;
+		this.props.deleteCandidate(index);
+	}
+	
+
 	render() {
 		let components = this.props.children && React.cloneElement(this.props.children, {
 			saveCandidate: this.props.saveCandidate,
 			candidatesList: this.props.candidatesList,
-			getYears: this.getYears
+			getYears: this.getYears,
+			eliminarCandidatos: this.eliminarCandidatos
 			
 		});
 		return (
 			<div>
+				{'Este es el componente de CandidateContainer'}
 				{components}
+				{'Arriba se montó la subruta'}
 			</div>
 		);
 	}
@@ -33,7 +43,8 @@ class CandidateContainer extends React.Component {
 CandidateContainer.propTypes = {
 	children: PropTypes.object, 
 	saveCandidate: PropTypes.func,
-	candidatesList: PropTypes.array
+	candidatesList: PropTypes.array,
+	deleteCandidate: PropTypes.func
 }; 
 
 function mapStateToProps(state) {
@@ -44,7 +55,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		saveCandidate: (candidate) => dispatch(saveCandidate(candidate))
+		saveCandidate: (candidate) => dispatch(saveCandidate(candidate)),
+		deleteCandidate: (index) => dispatch(deleteCandidate(index))
 	};
 }
 
