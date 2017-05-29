@@ -1,7 +1,17 @@
-import React, { Component } from 'react';
+/**
+ * @module User
+ */
+import React, { Component, PropTypes } from 'react';
 
 import { Button } from 'react-bootstrap';
 
+/**
+ * Contenedor para los usuarios, muestra un timer.
+ * 
+ * @class UserContainer
+ * @extends {Component}
+ * @constructor
+ */
 class UserContainer extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -18,7 +28,7 @@ class UserContainer extends Component {
 		};
 	}
 
-	//https://pastebin.com/Lb7LMFvK
+	
 	tick() {
 		if (this.state.shouldUpdateTime) {
 			this.setState({ elapsed: new Date() - this.state.date });
@@ -34,14 +44,15 @@ class UserContainer extends Component {
 	}
 
 	componentDidMount() {
-		if (this.props.params.autostart) {
+		let autostart = this.props.params.autostart;
+		if (autostart) {
 			this.btnStart();
 		}
 	}
 
-	/*componentWillUnmount() {
+	componentWillUnmount() {
 		clearInterval(this.state.timer);
-	}*/
+	}
 
 	componentWillReceiveProps(newProps) {
 		if (newProps.params.autostart) {
@@ -50,7 +61,13 @@ class UserContainer extends Component {
 	}
 
 
-	
+	/**
+	 * Manejador de evento que se ejecuta cuando  el boton es clickeado
+	 * 
+	 * @param {event} e  Evento del botón
+	 * 
+	 * @memberof UserContainer
+	 */
 	eventoChange(e) {
 		let valor = e.target.value;
 		alert(valor);
@@ -82,5 +99,8 @@ class UserContainer extends Component {
 		);
 	}
 }
+UserContainer.propType = {
+	params: PropTypes.object
+};
 
 export default UserContainer;

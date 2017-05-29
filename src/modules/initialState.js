@@ -9,6 +9,8 @@ let initialState = new Immutable.Map()
 	)
 	.set('examenModule',
 	new Immutable.Map()
+	.set('imagenes', {photos: {photo: []}})
+	
 		.set('preguntasList', [{
 			pregunta: '¿Qué es Javascript?',
 			respuestas: ['Un lenguaje de programación Web',
@@ -31,10 +33,12 @@ let initialState = new Immutable.Map()
 		},
 		{
 			pregunta: '¿Qué es Redux?',
+			
 			respuestas: ['Una plataforma para desarrollo Web',
 				'Un framework para hacer responsivas las paginas',
 				'Un framework que permite manejar un estado global en las aplicaciones'
 			],
+
 			respuestaCorrecta: 2,
 			peso: 1,
 			seleccionUsuario: 0

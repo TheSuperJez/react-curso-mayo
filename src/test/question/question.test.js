@@ -1,7 +1,6 @@
 import reducer, * as questionModule from '../../modules/questionModule';
 
 import {expect} from 'chai';
-
 import initialState from '../../modules/initialState';
 
 describe('Reducer de questions', () => {

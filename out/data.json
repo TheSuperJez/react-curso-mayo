@@ -1,0 +1,77 @@
+{
+    "project": {},
+    "files": {
+        "src/containers/UserContainer.js": {
+            "name": "src/containers/UserContainer.js",
+            "modules": {
+                "User": 1
+            },
+            "classes": {
+                "UserContainer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "User": {
+            "name": "User",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "UserContainer": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/containers/UserContainer.js",
+            "line": 8
+        }
+    },
+    "classes": {
+        "UserContainer": {
+            "name": "UserContainer",
+            "shortname": "UserContainer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "User",
+            "namespace": "",
+            "file": "src/containers/UserContainer.js",
+            "line": 8,
+            "description": "Contenedor para los usuarios, muestra un timer.",
+            "extends": "{Component}",
+            "is_constructor": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "src/containers/UserContainer.js",
+            "line": 64,
+            "description": "Manejador de evento que se ejecuta cuando  el boton es clickeado",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "Evento del botón",
+                    "type": "Event"
+                }
+            ],
+            "memberof": "UserContainer",
+            "class": "UserContainer",
+            "module": "User"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: memberof",
+            "line": " src/containers/UserContainer.js:64"
+        },
+        {
+            "message": "Missing item type\nManejador de evento que se ejecuta cuando  el boton es clickeado",
+            "line": " src/containers/UserContainer.js:64"
+        }
+    ]
+}
